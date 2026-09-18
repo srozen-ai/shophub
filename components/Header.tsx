@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 
 export default function Header() {
-  const { totalItems } = useCart();
+  const { totalItems, dismissOrderConfirmation } = useCart();
   const [pulse, setPulse] = useState(false);
   const isFirstRender = useRef(true);
 
@@ -26,7 +26,11 @@ export default function Header() {
           Shop<span className="text-indigo-600">Hub</span>
         </Link>
 
-        <div className="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2">
+        <Link
+          href="/checkout"
+          onClick={dismissOrderConfirmation}
+          className="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 transition hover:bg-slate-200"
+        >
           <span className="text-sm font-medium">Carrito</span>
           <span
             className={`flex h-6 min-w-6 items-center justify-center rounded-full px-2 text-sm font-semibold text-white transition-all duration-300 ${
@@ -35,7 +39,7 @@ export default function Header() {
           >
             {totalItems}
           </span>
-        </div>
+        </Link>
       </div>
     </header>
   );
