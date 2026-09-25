@@ -41,7 +41,7 @@ export default async function ProductoPage({ params, }: { params: Promise<{ id: 
                     </span>
 
                     <h1 className="text-2xl font-bold text-slate-900">{product.title}</h1>
-                    <p className="text-slate-600">{product.description}</p>
+                    <p className="text-2xl font-semibold">${product.price}</p>
                     <p className="text-sm text-slate-500">
                         {product.stock} unidades disponibles
                     </p>
